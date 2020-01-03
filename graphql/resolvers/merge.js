@@ -28,7 +28,7 @@ const events  = async eventIds => {
       return {
         ...user._doc,
         _id: user.id,
-        createEvents: events.bind(this, user._doc.createdEvents)
+        createdEvents: events.bind(this, user._doc.createdEvents)
       };
     } catch (err) {
       throw err;
@@ -38,7 +38,7 @@ const events  = async eventIds => {
   const transformEvent = event => {
     return {
       ...event._doc,
-      _id: event._doc._id.toString(),
+      _id: event._doc._id,
       date: dateToString(event._doc.date),
       creator: user.bind(this, event._doc.creator)
     };
